@@ -4,6 +4,7 @@ function rectArea(w,h){
 }
 //console.log(rectArea(3,4));
 
+
 //function expression
 var rectangArea = function(w,h){
 	return w*h;
@@ -23,7 +24,8 @@ var bike = {
 // bike.accelerate();
 // console.log(bike.speed);
 
-//singleton
+
+//singleton, one object only
 function SingleBike(){
 
 	if (typeof SingleBike.instance === 'object') {
@@ -40,6 +42,7 @@ function SingleBike(){
 // var secondBike = new SingleBike();
 // console.log(cityBike.bikeDetails());
 // console.log(secondBike.bikeDetails());
+
 
 //module pattern
 var car = (function(){
@@ -60,6 +63,7 @@ var car = (function(){
 // car.accelerate(20);
 // console.log(car.displaySpeed());
 
+
 //revealing module pattern
 var truck = (function(){
 	var speed = 40;
@@ -78,6 +82,7 @@ var truck = (function(){
 // truck.accelerate(20);
 // console.log(truck.displaySpeed());
 
+
 //constructor pattern
 function Person(fName, lName, age){
 	this.firstName = fName;
@@ -89,6 +94,7 @@ function Person(fName, lName, age){
 }
 // var mark = new Person('Mark', 'Doe', 24);
 // console.log(mark.personDetails());
+
 
 //constructor with prototype
 function Person(fName, lName, age){
@@ -107,8 +113,9 @@ Person.prototype.personDetails = function(){
 // console.log(simon);
 // console.log(simon.personDetails());
 
+
 //prototype pattern, appends all methods at once
-Cat = {
+var Cat = {
 	name: 'Garfield',
 	size: 'large',
 	age: 5
@@ -118,8 +125,54 @@ Cat.prototype = {
 		return 'miaow';
 	}
 }
-console.log(Cat.prototype.speak());
-kitty = Object.create(Cat);
-console.log(kitty.prototype.speak());
+// console.log(Cat.prototype.speak());
+// kitty = Object.create(Cat);
+// console.log(kitty.prototype.speak());
+
+
+//command pattern, declare methods first and an init/execute method
+var Dog = {//methods
+	speak: function() {
+		return 'woof';
+	},//execute:
+	init: function(name){
+		return Dog[name] && Dog[name].apply(Dog, [].splice.call(arguments,1));
+	}
+	
+}
+//console.log(Dog.init('speak','Rover'));
+
+
+//facade pattern
+function Car (options){
+	this.color = options.color || 'red';
+	this.doors = options.doors || 4;
+	this.model = options.model || 'sedan';
+}
+
+function Truck (options){
+	this.color = options.color || 'red';
+	this.doors = options.doors || 4;
+	this.seats = options.seats || 4;
+}
+
+function VehicleFactory(){
+	VehicleFactory.prototype.createVehicle = function(options){
+		switch(options.vehicleType){
+			case 'car': this.vehicleClass = Car; break;
+			case 'truck': this.vehicleClass = Truck; break;
+		}
+	return new this.vehicleClass(options);
+	}
+}
+
+var carFactory = new VehicleFactory();
+var car = carFactory.createVehicle({
+	vehicleType:'car',
+	color:'yellow',
+	doors:6
+});
+// console.log(car instanceof Car);
+// console.log(car);
 
 
