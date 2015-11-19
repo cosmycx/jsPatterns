@@ -143,7 +143,7 @@ var Dog = {//methods
 //console.log(Dog.init('speak','Rover'));
 
 
-//facade pattern
+//factory pattern
 function Car (options){
 	this.color = options.color || 'red';
 	this.doors = options.doors || 4;
