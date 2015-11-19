@@ -119,8 +119,7 @@ Cat.prototype = {
 	}
 }
 console.log(Cat.prototype.speak());
-kitty = Object.create(Person);
-kitty.prototype.personDetails();
-//console.log(kitty.speak());
+kitty = Object.create(Cat);
+console.log(kitty.prototype.speak());
 
 
