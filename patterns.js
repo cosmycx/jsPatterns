@@ -1,11 +1,11 @@
-//function declaration
+//function declaration-------------------------------------
 function rectArea(w,h){
 	return w*h;
 }
 //console.log(rectArea(3,4));
 
 
-//function expression
+//function expression--------------------------------------
 var rectangArea = function(w,h){
 	return w*h;
 }
@@ -25,7 +25,7 @@ var bike = {
 // console.log(bike.speed);
 
 
-//singleton, one object only
+//singleton, one object only--------------------------------
 function SingleBike(){
 
 	if (typeof SingleBike.instance === 'object') {
@@ -44,7 +44,7 @@ function SingleBike(){
 // console.log(secondBike.bikeDetails());
 
 
-//module pattern
+//module pattern---------------------------------------------
 var car = (function(){
 	var speed = 50;
 	return{
@@ -64,7 +64,7 @@ var car = (function(){
 // console.log(car.displaySpeed());
 
 
-//revealing module pattern
+//revealing module pattern------------------------------------
 var truck = (function(){
 	var speed = 40;
 	function accelerate(inSpeed){
@@ -83,7 +83,7 @@ var truck = (function(){
 // console.log(truck.displaySpeed());
 
 
-//constructor pattern
+//constructor pattern------------------------------------------
 function Person(fName, lName, age){
 	this.firstName = fName;
 	this.lastName = lName;
@@ -96,7 +96,7 @@ function Person(fName, lName, age){
 // console.log(mark.personDetails());
 
 
-//constructor with prototype
+//constructor with prototype-----------------------------------
 function Person(fName, lName, age){
 	this.firstName = fName;
 	this.lastName = lName;
@@ -114,7 +114,7 @@ Person.prototype.personDetails = function(){
 // console.log(simon.personDetails());
 
 
-//prototype pattern, appends all methods at once
+//prototype pattern, appends all methods at once---------------
 var Cat = {
 	name: 'Garfield',
 	size: 'large',
@@ -130,7 +130,7 @@ Cat.prototype = {
 // console.log(kitty.prototype.speak());
 
 
-//command pattern, declare methods first and an init/execute method
+//command pattern, declare methods first and an init/execute method---------
 var Dog = {//methods
 	speak: function() {
 		return 'woof';
@@ -143,7 +143,7 @@ var Dog = {//methods
 //console.log(Dog.init('speak','Rover'));
 
 
-//factory pattern
+//factory pattern------------------------------------------------
 function Car (options){
 	this.color = options.color || 'red';
 	this.doors = options.doors || 4;
